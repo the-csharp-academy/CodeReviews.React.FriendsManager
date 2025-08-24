@@ -30,6 +30,9 @@ public class CoffeeRepository :IRepository<CoffeeConsumption>
         var itemToUpdate=await GetById(item.Id);
         if (itemToUpdate == null)
             return;
+        itemToUpdate.TypeOfCoffee=item.TypeOfCoffee;
+        itemToUpdate.Caffeine=item.Caffeine;
+        itemToUpdate.ConsumedAt=item.ConsumedAt;
         try
         {
              _context.CoffeeConsumption.Update(itemToUpdate);
