@@ -1,3 +1,6 @@
+using CoffeeApi.Data;
+using CoffeeApi.Models;
+using CoffeeApi.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,36 +10,37 @@ namespace CoffeeApi.Controllers
     [ApiController]
     public class CoffeeController : ControllerBase
     {
-        // GET: api/<CoffeeController>
+        private readonly ICoffeeService  _coffeeService;
+
+        public CoffeeController(ICoffeeService coffeeService)
+        {
+            _coffeeService = coffeeService;
+        }
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<CoffeeConsumption>> 
+            GetPaginatedResult([FromQuery] int page, [FromQuery] int size)
         {
-            return new string[] { "value1", "value2" };
+            var paginatedResult= await 
+                _coffeeService.GetPaginatedList(page, size);
+            return paginatedResult;
         }
 
-        // GET api/<CoffeeController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<CoffeeController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task Create([FromBody] CoffeeConsumption coffeeConsumption)
         {
+            await _coffeeService.Add(coffeeConsumption);
         }
 
-        // PUT api/<CoffeeController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public async Task Update( [FromBody] CoffeeConsumption coffeeConsumption)
         {
+            await _coffeeService.Update(coffeeConsumption);
         }
 
-        // DELETE api/<CoffeeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete]
+        public async Task Delete( [FromBody] CoffeeConsumption coffeeConsumption )
         {
+            await _coffeeService.Delete(coffeeConsumption);
         }
     }
 }
