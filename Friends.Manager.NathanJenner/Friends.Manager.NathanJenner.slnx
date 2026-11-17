@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="friends.manager.nathanjenner.client/friends.manager.nathanjenner.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="Friends.Manager.NathanJenner.Server/Friends.Manager.NathanJenner.Server.csproj" />
+</Solution>

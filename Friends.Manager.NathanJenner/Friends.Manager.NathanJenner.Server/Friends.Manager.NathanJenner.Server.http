@@ -1,0 +1,52 @@
+@Friends.Manager.NathanJenner.Server_HostAddress = https://localhost:7277
+@categoryId = 1
+
+
+GET {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/friends/
+accept: application/json
+
+###
+
+GET {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/friends/1
+accept: application/json
+
+###
+
+### Create a new friend
+POST {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/friends/
+Content-Type: application/json
+
+{
+    "name": "Tim",
+    "lastContactDate": "2020-06-06",
+    "lastContactType": "Phone",
+    "desiredContactFrequencyDays": 7,
+    "categoryId": {{categoryId}}
+}
+
+
+
+
+###
+
+
+
+GET {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/categories/
+accept: application/json
+
+###
+
+GET {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/categories/1
+accept: application/json
+
+###
+
+
+### Create a new category
+POST {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/categories/
+Content-Type: application/json
+
+{
+    "name": "School"
+}
+

@@ -1,0 +1,85 @@
+@Friends.Manager.NathanJenner.Server_HostAddress = http://localhost:5278
+
+### Get all friends
+GET {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/friends/
+Accept: application/json
+
+###
+
+### Get a friend by id
+GET {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/friends/1
+Accept: application/json
+
+###
+
+### Create a new friend
+POST {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/friends/
+Content-Type: application/json
+
+{
+    "name": "Tim",
+    "contactFrequency": "Weekly",
+    "lastContactDate": "2010-06-06",
+    "category": {
+        "id": 1
+    }
+}
+
+###
+
+### Update an existing friend
+PUT {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/friends/4
+Content-Type: application/json
+
+{
+    "name": "Tim",
+    "contactFrequency": "Monthly",
+    "lastContactDate": "2024-01-15",
+    "category": {
+        "id": 1
+    }
+}
+
+###
+
+### Delete a friend
+DELETE {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/friends/1
+
+###
+
+### Get all categories
+GET {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/categories/
+Accept: application/json
+
+###
+
+### Get a category by id
+GET {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/categories/1
+Accept: application/json
+
+###
+
+### Create a new category
+POST {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/categories/
+Content-Type: application/json
+
+{
+    "name": "School"
+}
+
+###
+
+### Update an existing category
+PUT {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/categories/1
+Content-Type: application/json
+
+{
+    "name": "Work"
+}
+
+###
+
+### Delete a category
+DELETE {{Friends.Manager.NathanJenner.Server_HostAddress}}/api/categories/1
+
+###
